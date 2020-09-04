@@ -116,7 +116,8 @@ export default function getButtonStyles(theme) {
         _active: {
           backgroundColor: tokens.colors.gray200
         }
-      }
+      },
+      ...theme.buttons.appearances
     },
 
     sizes: {

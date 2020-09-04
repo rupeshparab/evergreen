@@ -7,6 +7,7 @@ import { Pane } from '../../layers'
 import { SegmentedControl } from '../../segmented-control'
 
 import * as Icons from '../../icons'
+import { ThemeProvider, defaultTheme } from '../../theme'
 import { IconButton, Button, BackButton, TextDropdownButton } from '..'
 
 const buttonsStory = storiesOf('buttons', module)
@@ -206,45 +207,86 @@ buttonsStory.add('Common', () => (
   </Box>
 ))
 
-buttonsStory.add('Button types', () => (
-  <Box padding={40}>
-    <Heading>Default Appearance</Heading>
-    <Box marginTop={12}>
-      <Button appearance="primary" marginRight={16}>
-        Primary
-      </Button>
-      <Button marginRight={16} intent="success">
-        Default
-      </Button>
-      <Button appearance="destructive" marginRight={16} intent="danger">
-        Destructive
-      </Button>
-      <Button appearance="minimal" marginRight={16} intent="warning">
-        Minimal
-      </Button>
-    </Box>
-    <Heading marginTop={24}>Disabled Appearance</Heading>
-    <Box marginTop={12}>
-      <Button disabled appearance="primary" marginRight={16}>
-        Primary
-      </Button>
-      <Button disabled marginRight={16} intent="success">
-        Default
-      </Button>
-      <Button
-        disabled
-        appearance="destructive"
-        marginRight={16}
-        intent="danger"
-      >
-        Destructive
-      </Button>
-      <Button disabled appearance="minimal" marginRight={16} intent="warning">
-        Minimal
-      </Button>
-    </Box>
-  </Box>
-))
+buttonsStory.add('Button types', () => {
+  return (
+    <ThemeProvider
+      value={{
+        ...defaultTheme,
+        buttons: {
+          appearances: {
+            minimalDanger: {
+              backgroundColor: 'transparent',
+              color: defaultTheme.tokens.colors.red500,
+
+              _focus: {
+                boxShadow: `0 0 0 2px ${defaultTheme.tokens.colors.blue100}`
+              },
+
+              _disabled: {
+                color: defaultTheme.tokens.colors.gray500,
+                borderColor: defaultTheme.tokens.colors.gray300
+              },
+
+              _hover: {
+                backgroundColor: defaultTheme.tokens.colors.gray100
+              },
+
+              _active: {
+                backgroundColor: defaultTheme.tokens.colors.gray200
+              }
+            }
+          }
+        }
+      }}
+    >
+      <Box padding={40}>
+        <Heading>Default Appearance</Heading>
+        <Box marginTop={12}>
+          <Button appearance="primary" marginRight={16}>
+            Primary
+          </Button>
+          <Button marginRight={16} intent="success">
+            Default
+          </Button>
+          <Button appearance="destructive" marginRight={16} intent="danger">
+            Destructive
+          </Button>
+          <Button appearance="minimal" marginRight={16} intent="warning">
+            Minimal
+          </Button>
+          <Button appearance="minimalDanger" marginRight={16}>
+            Minimal Danger
+          </Button>
+        </Box>
+        <Heading marginTop={24}>Disabled Appearance</Heading>
+        <Box marginTop={12}>
+          <Button disabled appearance="primary" marginRight={16}>
+            Primary
+          </Button>
+          <Button disabled marginRight={16} intent="success">
+            Default
+          </Button>
+          <Button
+            disabled
+            appearance="destructive"
+            marginRight={16}
+            intent="danger"
+          >
+            Destructive
+          </Button>
+          <Button
+            disabled
+            appearance="minimal"
+            marginRight={16}
+            intent="warning"
+          >
+            Minimal
+          </Button>
+        </Box>
+      </Box>
+    </ThemeProvider>
+  )
+})
 
 buttonsStory.add('TextDropdownButton', () => (
   <Box padding={40}>
