@@ -10,6 +10,7 @@ import { splitBoxProps } from 'ui-box'
  * @property {import('csstype').Properties} [_active]
  * @property {import('csstype').Properties} [_disabled]
  * @property {import('csstype').Properties} [_focus]
+ * @property {import('csstype').Properties} [_focusAndActive]
  * @property {import('csstype').Properties} [_invalid]
  */
 

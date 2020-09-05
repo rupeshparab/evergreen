@@ -1,9 +1,11 @@
 import { majorScale, minorScale } from '../../../scales'
 import { controlStyles } from '../shared'
+import { themeGet } from '../theme-get'
 
 export default function getButtonStyles(theme) {
   const { tokens } = theme
   const disabled = controlStyles._disabled
+  const get = themeGet.bind(null, theme)
 
   return {
     baseStyle: {
@@ -24,79 +26,97 @@ export default function getButtonStyles(theme) {
 
     appearances: {
       primary: {
-        backgroundColor: tokens.primary.base,
+        background: tokens.primary.base,
         borderColor: tokens.primary.base,
         color: 'white',
 
         _disabled: {
           ...disabled,
-          backgroundColor: tokens.primary.disabled,
+          background: tokens.primary.disabled,
           borderColor: tokens.primary.disabled
         },
 
         _hover: {
-          backgroundColor: tokens.primary.hover
+          background: tokens.primary.hover
         },
 
         _focus: {
-          backgroundColor: tokens.primary.hover,
+          background: tokens.primary.hover,
           boxShadow: `0 0 0 2px ${tokens.colors.blue100}`
         },
 
         _active: {
-          backgroundColor: tokens.primary.active
+          background: tokens.primary.active
         }
       },
       default: {
-        backgroundColor: 'white',
-        border: `1px solid ${tokens.colors.gray500}`,
-        color: tokens.colors.gray800,
+        background: get('buttons.default.default.background'),
+        border: get('buttons.default.default.border', 'none'),
+        color: get('buttons.default.default.color', get('colors.text.default')),
+        boxShadow: get('buttons.default.default.boxShadow'),
 
         _disabled: {
           ...disabled,
-          color: tokens.colors.gray500,
-          borderColor: tokens.colors.gray300
+          background: get('buttons.default.disabled.background'),
+          border: get('buttons.default.disabled.border'),
+          boxShadow: get('buttons.default.disabled.boxShadow'),
+          color: get('buttons.default.disabled.color')
         },
 
         _hover: {
-          borderColor: tokens.colors.gray600,
-          backgroundColor: tokens.colors.gray50
+          background: get('buttons.default.hover.background'),
+          border: get('buttons.default.hover.border'),
+          boxShadow: get('buttons.default.hover.boxShadow'),
+          color: get('buttons.default.hover.color')
         },
 
         _focus: {
-          boxShadow: `0 0 0 2px ${tokens.colors.blue100}`
+          background: get('buttons.default.focus.background'),
+          border: get('buttons.default.focus.border'),
+          boxShadow: get('buttons.default.focus.boxShadow'),
+          color: get('buttons.default.focus.color')
         },
 
         _active: {
-          backgroundColor: tokens.colors.gray100
+          background: get('buttons.default.active.background'),
+          border: get('buttons.default.active.border'),
+          boxShadow: get('buttons.default.active.boxShadow'),
+          color: get('buttons.default.active.color')
+        },
+
+        _focusAndActive: {
+          background: get('buttons.default.focusAndActive.background'),
+          border: get('buttons.default.focusAndActive.border'),
+          boxShadow: get('buttons.default.focusAndActive.boxShadow'),
+          color: get('buttons.default.focusAndActive.color')
         }
       },
       destructive: {
-        backgroundColor: tokens.colors.red500,
+        background: tokens.colors.red500,
         borderColor: tokens.colors.red500,
         color: 'white',
 
         _disabled: {
           ...disabled,
-          backgroundColor: tokens.colors.red100,
+          background: tokens.colors.red100,
           borderColor: tokens.colors.red100
         },
 
         _hover: {
-          backgroundColor: tokens.colors.red600
+          background: tokens.colors.red600
         },
 
         _focus: {
-          backgroundColor: tokens.colors.red600,
+          background: tokens.colors.red600,
           boxShadow: `0 0 0 2px ${tokens.colors.red100}`
         },
 
         _active: {
-          backgroundColor: tokens.colors.red700
+          background: tokens.colors.red700
         }
       },
       minimal: {
-        backgroundColor: 'transparent',
+        background: 'transparent',
         color: tokens.colors.gray800,
 
         _focus: {
@@ -110,11 +130,11 @@ export default function getButtonStyles(theme) {
         },
 
         _hover: {
-          backgroundColor: tokens.colors.gray100
+          background: tokens.colors.gray100
         },
 
         _active: {
-          backgroundColor: tokens.colors.gray200
+          background: tokens.colors.gray200
         }
       }
     },
