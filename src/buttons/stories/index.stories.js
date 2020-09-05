@@ -209,37 +209,37 @@ buttonsStory.add('Common', () => (
 
 buttonsStory.add('Button types', () => {
   return (
-    <ThemeProvider
-      value={{
-        ...defaultTheme,
-        buttons: {
-          appearances: {
-            minimalDanger: {
-              backgroundColor: 'transparent',
-              color: defaultTheme.tokens.colors.red500,
+    <Box padding={40}>
+      <ThemeProvider
+        value={{
+          ...defaultTheme,
+          buttons: {
+            appearances: {
+              minimalDanger: {
+                backgroundColor: 'transparent',
+                color: defaultTheme.tokens.colors.red500,
 
-              _focus: {
-                boxShadow: `0 0 0 2px ${defaultTheme.tokens.colors.blue100}`
-              },
+                _focus: {
+                  boxShadow: `0 0 0 2px ${defaultTheme.tokens.colors.blue100}`
+                },
 
-              _disabled: {
-                color: defaultTheme.tokens.colors.gray500,
-                borderColor: defaultTheme.tokens.colors.gray300
-              },
+                _disabled: {
+                  color: defaultTheme.tokens.colors.gray500,
+                  borderColor: defaultTheme.tokens.colors.gray300
+                },
 
-              _hover: {
-                backgroundColor: defaultTheme.tokens.colors.gray100
-              },
+                _hover: {
+                  backgroundColor: defaultTheme.tokens.colors.gray100
+                },
 
-              _active: {
-                backgroundColor: defaultTheme.tokens.colors.gray200
+                _active: {
+                  backgroundColor: defaultTheme.tokens.colors.gray200
+                }
               }
             }
           }
-        }
-      }}
-    >
-      <Box padding={40}>
+        }}
+      >
         <Heading>Default Appearance</Heading>
         <Box marginTop={12}>
           <Button appearance="primary" marginRight={16}>
@@ -283,8 +283,41 @@ buttonsStory.add('Button types', () => {
             Minimal
           </Button>
         </Box>
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
+      <ThemeProvider
+        value={{
+          ...defaultTheme,
+          tokens: {
+            ...defaultTheme.tokens,
+            buttonPrimaryColor:
+              'linear-gradient(rgb(7, 136, 222), rgb(17, 106, 184))',
+            buttonPrimaryBorderColor: null,
+            buttonPrimaryHoverBackground:
+              'linear-gradient(rgb(6, 121, 197), rgb(15, 93, 161))',
+            buttonPrimaryActiveColor:
+              'linear-gradient(rgb(15, 93, 161), rgb(15, 93, 161))',
+            buttonPrimaryFocusColor:
+              'linear-gradient(rgb(6, 121, 197), rgb(15, 93, 161))'
+          }
+        }}
+      >
+        <Heading marginTop={24}>Themed Buttons</Heading>
+        <Box marginTop={12}>
+          <Button appearance="primary" marginRight={16}>
+            Primary
+          </Button>
+          <Button marginRight={16} intent="success">
+            Default
+          </Button>
+          <Button appearance="destructive" marginRight={16} intent="danger">
+            Destructive
+          </Button>
+          <Button appearance="minimal" marginRight={16} intent="warning">
+            Minimal
+          </Button>
+        </Box>
+      </ThemeProvider>
+    </Box>
   )
 })
 
