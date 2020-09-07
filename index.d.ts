@@ -2371,6 +2371,7 @@ export declare const ThemeContext: React.Context<Theme>
 export declare const ThemeProvider: React.Context<Theme>['Provider']
 export declare const ThemeConsumer: React.Context<Theme>['Consumer']
 export declare const useTheme: () => Theme
+export declare const Themer: any
 
 export interface IconProps extends BoxProps<'svg'> {
   /**
