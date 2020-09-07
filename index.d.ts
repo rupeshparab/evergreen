@@ -387,7 +387,7 @@ export interface Theme {
   avatarColors: string[]
   badgeColors: string[]
   colors: Colors
-  elevations: Elevation[]
+  elevations: string[]
   fills: Fills
   overlayBackgroundColor: string
   palette: Palette
@@ -395,11 +395,7 @@ export interface Theme {
   spinnerColor: string
   typography: Typography
   getIconColor(color: string): string
-  getAvatarProps(args: {
-    isSolid?: boolean
-    color: string
-    hashValue?: string
-  }): { color: string; backgroundColor: string }
+  getAvatarProps(args: any): any
 }
 
 export const defaultTheme: Theme
@@ -539,6 +535,12 @@ export interface ButtonOwnProps extends TextOwnProps {
    * This also disables the button.
    */
   isLoading?: boolean
+
+  /**
+   * To support creation of button with tags like span or a
+  */
+  elementType?: string,
+
   /**
    * Forcefully set the active state of a button.
    * Useful in conjuction with a Popover.

@@ -49,6 +49,7 @@ const Button = memo(
       disabled,
       appearance = 'default',
       isLoading,
+      elementType,
 
       // Paddings
       paddingRight,
@@ -75,7 +76,7 @@ const Button = memo(
 
     return (
       <Text
-        is="button"
+        is={elementType || 'button'}
         ref={ref}
         className={cx(themedClassName, className)}
         borderTopRightRadius={borderRadius}
@@ -155,6 +156,11 @@ Button.propTypes = {
    * This also disables the button.
    */
   isLoading: PropTypes.bool,
+
+  /**
+   * To support creation of button with tags like span or a
+   */
+  elementType: PropTypes.string,
 
   /**
    * Forcefully set the active state of a button.
